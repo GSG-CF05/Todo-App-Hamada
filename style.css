@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header{
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+
+}
+header h1{
+    font-size: 2.5rem ;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#new-todo-form{
+    display: flex;
+}
+input,button{
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+#new-todo-input{
+    color: rgb(76 43 43) !important;
+    flex: 1 1 0%;
+    padding: 1rem;
+    background-color: rgb(245 247 255);
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: solid 1px #1e1e1e26;
+}
+#new-todo-submit{
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+#new-todo-submit:hover{
+    opacity: 0.8;
+}
+#new-todo-submit:active{
+    opacity: 0.6;;
+}
+
+main{
+    flex: 1 1 0%;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+.task-list{
+    padding: 1rem;
+}
+.task-list h2{
+    font-size: 2.5rem ;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+#tasks .task{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(76 43 43) !important;
+    flex: 1 1 0%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgb(245 247 255);
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: solid 1px #1e1e1e26;
+}
+#tasks .task .content .text{
+    font-size: 1.05rem;
+    color: #1e1e1e73;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+#tasks .task .actions {
+    font-size: 1.05rem;
+    color: #1e1e1e26;
+    display: flex;
+    margin: 0 -0.5rem;
+}
+#tasks .task button{
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e1e1e8a;
+    transition:0.4s ;
+}
+#tasks .task button:hover{
+    color: black;
+    opacity: 0.8;
+}
+#tasks .task button:active{
+    opacity: 0.6;
+}
