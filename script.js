@@ -1,6 +1,8 @@
 const form = document.querySelector("#new-todo-form");
 const input = document.querySelector("#new-todo-input");
 const list_el = document.querySelector("#tasks")
+let todos = [];
+
 
 form.addEventListener("submit", (e) => {
     console.log("submit");
@@ -43,8 +45,13 @@ form.addEventListener("submit", (e) => {
     list_el.appendChild(task_el);
     task_content_el.appendChild(task_input_el);
     console.log(task_el);
-  
+
+    saveToLocalStorge({ id: date, text: task_input_el.value });
     input.value = "";
 
   });
+  function saveToLocalStorge(todo) {
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
   
