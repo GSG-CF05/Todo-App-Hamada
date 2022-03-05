@@ -52,7 +52,8 @@ form.addEventListener("submit", (e) => {
   saveToLocalStorge({ id: date, text: task_input_el.value });
   input.value = "";
 
-  deleteItem()
+  editItem();
+  deleteItem();
 });
 function saveToLocalStorge(todo) {
   todos.push(todo);
@@ -98,7 +99,8 @@ function getItemInLoad() {
     task_content_el.appendChild(task_input_el);
     console.log(task_el);
 
-    deleteItem()
+    editItem();
+    deleteItem();
   });
 }
 
@@ -129,3 +131,37 @@ function deletefromlocalStorge(id) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+function editItem() {
+  const editBtn = document.querySelectorAll(".edit");
+  editBtn.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const task_el = event.target;
+      var id = event.target.dataset.id;
+      var input =
+        event.target.parentElement.parentElement.querySelector("input");
+      console.log(input);
+      if (task_el.innerText.toLowerCase() == "edit") {
+        task_el.innerText = "Save";
+        input.removeAttribute("readonly");
+        input.focus();
+      } else {
+        task_el.innerText = "Edit";
+        editfromlocalStorge(input, id);
+        localStorage.setItem("todos", JSON.stringify(todos));
+        input.setAttribute("readonly", "readonly");
+      }
+    });
+  });
+}
+
+function editfromlocalStorge(input, id) {
+  if (localStorage.getItem("todos")) {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.forEach((todo, index) => {
+    if (todo.id == id) {
+      todo.text = input.value;
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
