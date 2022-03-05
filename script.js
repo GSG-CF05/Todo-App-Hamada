@@ -51,6 +51,8 @@ form.addEventListener("submit", (e) => {
 
   saveToLocalStorge({ id: date, text: task_input_el.value });
   input.value = "";
+
+  deleteItem()
 });
 function saveToLocalStorge(todo) {
   todos.push(todo);
@@ -95,5 +97,35 @@ function getItemInLoad() {
     list_el.appendChild(task_el);
     task_content_el.appendChild(task_input_el);
     console.log(task_el);
+
+    deleteItem()
   });
 }
+
+function deleteItem() {
+  const deleteBtn = document.querySelectorAll(".delete");
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const task_el = event.target.parentElement.parentElement;
+      var id = event.target.dataset.id;
+      console.log(id);
+      deletefromlocalStorge(id);
+      list_el.removeChild(task_el);
+    });
+  });
+}
+
+function deletefromlocalStorge(id) {
+  if (localStorage.getItem("todos")) {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  console.log(todos);
+  todos.forEach((todo, index) => {
+    console.log(todo.id == id);
+    if (todo.id == id) {
+      todos.splice(index, 1);
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
